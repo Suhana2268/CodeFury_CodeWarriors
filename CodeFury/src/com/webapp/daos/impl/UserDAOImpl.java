@@ -7,9 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import com.webapp.daos.UserDAO;
 import com.webapp.exceptions.ConnectionNotCreatedException;
@@ -24,12 +26,9 @@ public class UserDAOImpl implements UserDAO{
 	private Connection conn;
 	private ConnectionUtility connectionDB;
 	public UserDAOImpl() {
-		System.out.println("Constructor1");
 		connectionDB=new ConnectionUtility();
-		System.out.println("Constructor");
 	}
 
-	@SuppressWarnings("finally")
 	@Override
 	public boolean createUserDAO(User user) throws UserAlreadyExistsException{
 		final String checkEntry="select userId from users where active=0 and email=?";
@@ -71,13 +70,13 @@ public class UserDAOImpl implements UserDAO{
 			}
 			finally {
 				connectionDB.closeConnection(conn);
-				return true;
 			}
 		}
 	catch(ConnectionNotCreatedException error) {
 		error.printStackTrace();
 		return false;
 	}
+		return true;
 }
 
 	@Override
@@ -98,7 +97,7 @@ public class UserDAOImpl implements UserDAO{
 					user.setRole(rs.getString("role"));
 					user.setCredit(rs.getInt("credit"));
 					user.setUserId(rs.getInt("userId"));
-					user.setLastLogin(rs.getTimestamp("lastLogin"));
+					user.setLastLogin(rs.getTimestamp("lastLogin", Calendar.getInstance(TimeZone.getTimeZone("IST"))));
 					users.add(user);
 				}
 				
@@ -137,7 +136,7 @@ public class UserDAOImpl implements UserDAO{
 					user.setRole(rs.getString("role"));
 					user.setCredit(rs.getInt("credit"));
 					user.setUserId(rs.getInt("userId"));
-					user.setLastLogin(rs.getTimestamp("lastLogin"));
+					user.setLastLogin(rs.getTimestamp("lastLogin",Calendar.getInstance(TimeZone.getTimeZone("IST"))));
 					users.add(user);
 				}
 				
@@ -195,7 +194,7 @@ public class UserDAOImpl implements UserDAO{
 	}
 		
 	return user;
-}
+} 
 
 	@Override
 	public boolean verifyUser(String email) {
@@ -213,8 +212,7 @@ public class UserDAOImpl implements UserDAO{
 					String update="update users set lastLogin=? where email=?";
 					Date date= new Date(); 
 					long time = date.getTime();
-					Timestamp currTS = new Timestamp(time);
-					System.out.println(date+"sms"+time+"jij"+currTS); 
+					Timestamp currTS = new Timestamp(time); 
 					if (rs.getString("role").equals("Manager")) {
 						Calendar cal = Calendar.getInstance();
 						cal.setTime(date);
@@ -226,8 +224,9 @@ public class UserDAOImpl implements UserDAO{
 						}	
 					}
 					PreparedStatement ps2=conn.prepareStatement(update);
-					ps2.setTimestamp(1, currTS);
+					ps2.setTimestamp(1,currTS, Calendar.getInstance(TimeZone.getTimeZone("IST")));
 					ps2.setString(2, email);
+					System.out.println(ps2.toString());
 					int cnt=ps2.executeUpdate();
 					System.out.println(cnt);
 				}
@@ -246,8 +245,9 @@ public class UserDAOImpl implements UserDAO{
 		}
 	catch(ConnectionNotCreatedException error) {
 		error.printStackTrace();
+		return false;
 	}
-	return false;
+	return true;
 }
 
 }
