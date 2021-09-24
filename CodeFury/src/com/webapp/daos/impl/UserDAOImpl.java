@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -212,6 +213,7 @@ public class UserDAOImpl implements UserDAO{
 					long time = date.getTime();
 					Timestamp currTS = new Timestamp(time); 
 					if (rs.getString("role").equals("Manager")) {
+						SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
 						Timestamp lastlogin=rs.getTimestamp("lastLogin");
 						Date dateLastLogin=new Date(lastlogin.getTime());
 						System.out.println("Lastlogin dateTime"+lastlogin+"and just date: "+ dateLastLogin);
@@ -228,8 +230,8 @@ public class UserDAOImpl implements UserDAO{
 					ps2.setTimestamp(1,currTS, Calendar.getInstance(TimeZone.getTimeZone("IST")));
 					ps2.setString(2, email);
 					System.out.println(ps2.toString());
-					int cnt=ps2.executeUpdate();
-					System.out.println(cnt);
+					//int cnt=ps2.executeUpdate();
+					//System.out.println(cnt);
 				}
 				else {
 					System.out.println("User Doesnot exists");

@@ -10,5 +10,6 @@ public interface AmenitiesDAO {
 	boolean addAmenity(Amenities amenity);
 	boolean changeCost(int newCost,int amenityId);
 	List<Amenities> getAmenityList();
+	Amenities getAmenityInfo(int amenityId);
 	
 }

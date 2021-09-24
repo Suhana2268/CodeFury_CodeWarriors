@@ -142,4 +142,32 @@ public class AmenitiesDAOImpl implements AmenitiesDAO {
 		return amenities;
 	}
 
+	public Amenities getAmenityInfo(int amenityId) {
+		Amenities amenity =new Amenities();
+		final String SQL="select * from amenities where amenityId=?";
+		try{
+			System.out.println("Trying Connection");
+			conn=connectionDB.createConnection();
+			try {
+				ps=conn.prepareStatement(SQL);
+				ps.setInt(1, amenityId);
+				ResultSet rs=ps.executeQuery();
+				if (rs.next()) {
+					amenity.setAmenityId(rs.getInt("amenityId"));
+					amenity.setAmenityName(rs.getString("amenityName"));
+					amenity.setCost(rs.getInt("cost"));}
+				}
+			catch(SQLException e) {
+				e.printStackTrace();
+			}
+			finally {
+				connectionDB.closeConnection(conn);
+			}
+		}
+	catch(ConnectionNotCreatedException error) {
+		error.printStackTrace();
+	}
+		
+	return amenity;
+	}
 }

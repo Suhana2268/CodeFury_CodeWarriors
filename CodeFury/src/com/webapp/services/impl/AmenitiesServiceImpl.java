@@ -3,7 +3,7 @@ package com.webapp.services.impl;
 import java.util.List;
 
 import com.webapp.daos.AmenitiesDAO;
-import com.webapp.daos.impl.AmenitiesDAOImpl;
+import com.webapp.factory.AmenitiesDAOFactory;
 import com.webapp.models.Amenities;
 import com.webapp.services.AmenitiesService;
 
@@ -13,7 +13,7 @@ public class AmenitiesServiceImpl implements AmenitiesService{
 	
 	public AmenitiesServiceImpl() {
 		
-		dao=new AmenitiesDAOImpl();
+		dao=AmenitiesDAOFactory.getAmenitiesDAO();
 	}
 	
 	@Override
@@ -34,6 +34,11 @@ public class AmenitiesServiceImpl implements AmenitiesService{
 	@Override
 	public List<Amenities> getAmenityList() {
 		return dao.getAmenityList();
+	}
+
+	@Override
+	public Amenities getAmenityInfo(int amenityId) {
+		return dao.getAmenityInfo(amenityId);
 	}
 
 }

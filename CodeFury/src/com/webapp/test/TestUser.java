@@ -14,8 +14,8 @@ public class TestUser {
 		User u1= new User("Smriti Srivastava","smriti123@gmail.com","9808979890","Manager");
 		//service.createUserDAO(u1); //exception raise ki jagah handle ho rha? why?
 		System.out.println(service.verifyUser("smriti@gmail.com"));
-		System.out.println(service.getAllUsers());
-		System.out.println(service.getUserInfo(1));
+		//System.out.println(service.getAllUsers());
+		//System.out.println(service.getUserInfo(1));
 	}
 
 }

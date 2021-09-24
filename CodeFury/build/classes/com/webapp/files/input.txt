@@ -1,0 +1,23 @@
+<?xml version = "1.0"?>
+<class>
+   <user>
+      <name>dinkar</name>
+      <email>kad</email>
+      <phone>dinkar</phone>
+      <role>85</role>
+   </user>
+   
+   <user>
+      <name>Vaneet</name>
+      <email>Gupta</email>
+      <phone>vinni</phone>
+      <role>95</role>
+   </user>
+   
+   <user>
+      <name>jasvir</name>
+      <email>singn</email>
+      <phone>jazz</phone>
+      <role>90</role>
+   </user>
+</class>
