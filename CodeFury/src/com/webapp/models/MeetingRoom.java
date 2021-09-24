@@ -2,7 +2,6 @@ package com.webapp.models;
 
 import java.util.List;
 
-import com.webapp.services.impl.AmenitiesServiceImpl;
 
 public class MeetingRoom {
 
@@ -11,7 +10,7 @@ public class MeetingRoom {
 	private int active;
 	private double ratingOfRoom;
 	private int totalMeetingConducted;
-	private List<RoomAmenity> amenitiesInRoom;
+	private List<Amenities> amenitiesInRoom;
 	private int perHourCost;
 	
 	public MeetingRoom() {
@@ -58,10 +57,10 @@ public class MeetingRoom {
 		this.totalMeetingConducted = totalMeetingConducted;
 	}
 
-	public List<RoomAmenity> getAmenitiesInRoom() {
+	public List<Amenities> getAmenitiesInRoom() {
 		return amenitiesInRoom;
 	}
-	public void setAmenitiesInRoom(List<RoomAmenity> amenitiesInRoom) {
+	public void setAmenitiesInRoom(List<Amenities> amenitiesInRoom) {
 		this.amenitiesInRoom = amenitiesInRoom;
 	}
 
@@ -73,14 +72,10 @@ public class MeetingRoom {
 		this.perHourCost = perHourCost;
 	}
 	
-	public String printAmenities(List<RoomAmenity> amenitiesInRoom) {
+	public String printAmenities(List<Amenities> amenitiesInRoom) {
 		String str="[";
-		AmenitiesServiceImpl service=new AmenitiesServiceImpl();
-		for (RoomAmenity amenity: amenitiesInRoom) {
-			Amenities obj=new Amenities();
-			obj=service.getAmenityInfo(amenity.getAmenityId());
-			str+=obj.getAmenityName();
-			str+=",\n";
+		for (Amenities amenity: amenitiesInRoom) {
+			str+=amenity.toString();
 		}
 		str+="]";
 		return str;

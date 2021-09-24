@@ -20,19 +20,10 @@ public class MeetingRoomServiceImpl implements MeetingRoomService {
 		return dao.addMeetingRoom(meetingRoomName, capacity, amenities);
 	}
 
-	@Override
-	public boolean editMeetingRoom(MeetingRoom room) {
-		return dao.editMeetingRoom(room);
-	}
 
 	@Override
 	public boolean addRoomAmenities(String meetingRoomName, List<Integer> amenities) {
 		return dao.addRoomAmenities(meetingRoomName, amenities);
-	}
-
-	@Override
-	public boolean getRoomAmenities(String meetingRoomName, List<Integer> amenities) {
-		return dao.getRoomAmenities(meetingRoomName, amenities);
 	}
 
 	@Override
@@ -53,6 +44,16 @@ public class MeetingRoomServiceImpl implements MeetingRoomService {
 	@Override
 	public int getPerHourCost(String meetingRoomName) {
 		return dao.getPerHourCost(meetingRoomName);
+	}
+
+	@Override
+	public boolean editMeetingRoomCapacity(int newCapacity, String meetingRoomName) {
+		return dao.editMeetingRoomCapacity(newCapacity, meetingRoomName);
+	}
+
+	@Override
+	public boolean removeRoomAmenities(String meetingRoomName, List<Integer> amenities) {
+		return dao.removeRoomAmenities(meetingRoomName, amenities);
 	}
 
 }

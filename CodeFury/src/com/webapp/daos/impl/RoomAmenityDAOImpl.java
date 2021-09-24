@@ -53,15 +53,16 @@ public class RoomAmenityDAOImpl implements RoomAmenityDAO {
 		return true;
 	}
 
-	public boolean deleteRoomAmenity(int amenityId) {
+	public boolean deleteRoomAmenity(RoomAmenity roomAmenity) {
 
-		final String SQL="delete * from from room_amenity where amenityId= ?";
+		final String SQL="delete * from from room_amenity where amenityId= ? and meetingRoomName=?";
 		try{
 			System.out.println("Trying Connection");
 			conn=connectionDB.createConnection();
 			try {
 				ps=conn.prepareStatement(SQL);
-				ps.setInt(1, amenityId);
+				ps.setInt(1, roomAmenity.getAmenityId());
+				ps.setString(2, roomAmenity.getMeetingRoomName());
 				int cnt=ps.executeUpdate();
 				if(cnt!=0) {
 					System.out.println("### Selected Amenity has been removed from the room ###");

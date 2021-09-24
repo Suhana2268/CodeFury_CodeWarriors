@@ -9,6 +9,6 @@ import com.webapp.models.RoomAmenity;
 public interface RoomAmenityService {
 	
 	boolean addRoomAmenity(RoomAmenity roomAmenity);
-	boolean deleteRoomAmenity(int amenityId);
+	boolean deleteRoomAmenity(RoomAmenity roomAmenity);
 	List<Amenities> getAmenitiesOfRoom(String meetingRoomName);
 }

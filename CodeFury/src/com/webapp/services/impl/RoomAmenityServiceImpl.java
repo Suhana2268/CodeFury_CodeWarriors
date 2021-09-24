@@ -21,8 +21,8 @@ public class RoomAmenityServiceImpl implements RoomAmenityService {
 	}
 
 	@Override
-	public boolean deleteRoomAmenity(int amenityId) {
-		return dao.deleteRoomAmenity(amenityId);
+	public boolean deleteRoomAmenity(RoomAmenity roomAmenity) {
+		return dao.deleteRoomAmenity(roomAmenity);
 	}
 
 	@Override
