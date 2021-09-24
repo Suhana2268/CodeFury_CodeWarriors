@@ -2,6 +2,8 @@ package com.webapp.models;
 
 import java.util.List;
 
+import com.webapp.services.impl.AmenitiesServiceImpl;
+
 public class MeetingRoom {
 
 	private String meetingRoomName;
@@ -10,6 +12,7 @@ public class MeetingRoom {
 	private double ratingOfRoom;
 	private int totalMeetingConducted;
 	private List<RoomAmenity> amenitiesInRoom;
+	private int perHourCost;
 	
 	public MeetingRoom() {
 	}
@@ -19,8 +22,6 @@ public class MeetingRoom {
 		this.meetingRoomName = meetingRoomName;
 		this.capacity = capacity;
 	}
-
-
 
 	public String getMeetingRoomName() {
 		return meetingRoomName;
@@ -64,17 +65,33 @@ public class MeetingRoom {
 		this.amenitiesInRoom = amenitiesInRoom;
 	}
 
+	public int getPerHourCost() {
+		return perHourCost;
+	}
 
+	public void setPerHourCost(int perHourCost) {
+		this.perHourCost = perHourCost;
+	}
+	
+	public String printAmenities(List<RoomAmenity> amenitiesInRoom) {
+		String str="[";
+		AmenitiesServiceImpl service=new AmenitiesServiceImpl();
+		for (RoomAmenity amenity: amenitiesInRoom) {
+			Amenities obj=new Amenities();
+			obj=service.getAmenityInfo(amenity.getAmenityId());
+			str+=obj.getAmenityName();
+			str+=",\n";
+		}
+		str+="]";
+		return str;
+	}
 
 	@Override
 	public String toString() {
 		return "MeetingRoom [meetingRoomName=" + meetingRoomName + ", capacity=" + capacity + ", active=" + active
 				+ ", ratingOfRoom=" + ratingOfRoom + ", totalMeetingConducted=" + totalMeetingConducted
-				+ ", amenitiesInRoom=" + amenitiesInRoom + "]";
+				+  ", perHourCost=" + perHourCost + ", amenitiesInRoom="+printAmenities(amenitiesInRoom) +"]";
 	}
-	
-	
-	
 	
 	
 	}
