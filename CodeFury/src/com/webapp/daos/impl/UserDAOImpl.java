@@ -5,9 +5,7 @@ import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -214,6 +212,9 @@ public class UserDAOImpl implements UserDAO{
 					long time = date.getTime();
 					Timestamp currTS = new Timestamp(time); 
 					if (rs.getString("role").equals("Manager")) {
+						Timestamp lastlogin=rs.getTimestamp("lastLogin");
+						Date dateLastLogin=new Date(lastlogin.getTime());
+						System.out.println("Lastlogin dateTime"+lastlogin+"and just date: "+ dateLastLogin);
 						Calendar cal = Calendar.getInstance();
 						cal.setTime(date);
 						boolean isMonday = cal.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
