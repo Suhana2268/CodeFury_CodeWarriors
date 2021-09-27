@@ -1,0 +1,37 @@
+body {
+	background-image: url("https://wallpaperaccess.com/full/4012588.jpg");
+}
+.f1{
+	margin-top: 100px;
+	
+}
+h3{
+	font-weight: bold;
+	
+}
+.inp1{
+	background-color: black;
+	color: white;
+	
+}
+form .f2{
+	padding:100px;
+	width: 20px;
+	height: 100px;
+	margin-top: 200px;
+}
+.cnt1{
+	padding-top: 100px;
+}
+.cnt2{
+	padding-bottom: 500px;
+	padding-top: 200px;
+}
+.btn{
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+}
+.xy {
+	font-weight: bold;
+}

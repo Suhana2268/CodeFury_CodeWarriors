@@ -1,0 +1,26 @@
+body {
+	background-image: url("https://wallpaperaccess.com/full/4012588.jpg");
+}
+table {
+	background-color: black;
+	border: 5px;
+	border-color: white;
+}
+td {
+	color: white;
+	padding: 10px;
+}
+span {
+	font-weight: bold;
+}
+.inp {
+	margin-left: 13px;
+}
+.btn {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
+.cnt1{
+	padding-bottom: 100px;
+}

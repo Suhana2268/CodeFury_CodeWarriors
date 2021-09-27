@@ -1,0 +1,86 @@
+body  
+{  
+    margin: 0;  
+    padding: 0;    
+    font-family: 'Arial'; 
+   background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background-image: url("https://wallpaperaccess.com/full/4012588.jpg")
+   
+}  
+.login{  
+        width: 500px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 80px;  
+        background: black;  
+        border-radius: 15px ;  
+        margin-bottom: 60px;
+}  
+h2{  
+    text-align: center;  
+    color: black;  
+    padding-top: 65px;
+    font-weight: black solid;
+
+}  
+label{  
+    color: #ffffff;  
+    font-size: 17px; 
+    margin-left: 25px; 
+}  
+#Uname{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+    margin-left: 25px;
+}  
+#Email{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+    margin-left: 25px;
+      
+}  
+#UId{
+	width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+    margin-left: 25px;
+	
+}
+#log{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: white; 
+    background-color:#23506d;  
+  margin-left: 30px;
+  
+}  
+span{  
+    color: white;  
+    font-size: 17px;  
+}  
+a{  
+    float: right;  
+    background-color: grey;  
+}  
+.lb {
+	padding-bottom: 10px;
+	margin-left: 10px;
+	
+}
+.rem {
+	
+}
